@@ -18,7 +18,6 @@ def __quick_sort(A, low, high):
         return A
 
     pivot = partition(A, low, high)
-    print(pivot)
     __quick_sort(A, low, pivot)
     __quick_sort(A, pivot+1, high)
 
