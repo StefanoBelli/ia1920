@@ -13,10 +13,10 @@ def sorted_merge(a, b):
     idx_b = 0
 
     while idx_a < end_a and idx_b < end_b:
-        if a[idx_a] < b[idx_b]:
+        if a[idx_a] <= b[idx_b]:
             new.append(a[idx_a])
             idx_a += 1
-        elif b[idx_b] < a[idx_a]:
+        else:
             new.append(b[idx_b])
             idx_b += 1
 
@@ -39,4 +39,4 @@ def merge_sort(L):
 
     return sorted_merge(first_half, last_half)
 
-print(merge_sort([7,2,4,3,5,1]))
+print(merge_sort([5,2,5,3,5,1,7]))
