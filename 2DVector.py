@@ -41,8 +41,25 @@ class Vector2D:
 
         raise StopIteration
 
+    @property
+    def x(self):
+        return self._x
+
+    @property
+    def y(self):
+        return self._y
+
+    @x.setter
+    def x(self, n):
+        self._x = n
+
+    @y.setter
+    def y(self, n):
+        self._y = n
+
+    @property
+    def mathvec(self):
+        return "("+str(self._x)+","+str(self._y)+")"
+
 vec = Vector2D(2,3)
-for component in vec:
-    print(component)
-for component in vec:
-    print(component)
+print(vec.mathvec)
