@@ -2,12 +2,20 @@ from sys import argv
 import bubble_sort
 import bucket_sort
 import insertion_sort
-import quick_sort
-import selection_sort
 import merge_sort
+import quick_sort
 import random
+import selection_sort
 import sys
 import time
+
+
+def util_list_copy(old):
+    new = []
+    for elem in old:
+        new.append(elem)
+
+    return new
 
 arrlen = 100
 
@@ -30,8 +38,8 @@ test_on = {
         }
 
 for key in test_on:
+    bak = util_list_copy(randarr)
     print(" --> {}".format(key))
-    bak = randarr
     algorithm_impl = test_on[key]
 
     before = time.time()
