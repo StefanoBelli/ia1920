@@ -24,5 +24,3 @@ def __quick_sort(A, low, high):
 def quick_sort(A):
     __quick_sort(A, 0, len(A) - 1)
     return A
-
-print(quick_sort([5,4,3,5,1,5]))

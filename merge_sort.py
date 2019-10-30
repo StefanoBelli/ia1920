@@ -38,5 +38,3 @@ def merge_sort(L):
     last_half = merge_sort(L[mid:])
 
     return sorted_merge(first_half, last_half)
-
-print(merge_sort([5,2,5,3,5,1,7]))

@@ -19,5 +19,3 @@ def selection_sort(L):
             L[i], L[globalMinIndex] = L[globalMinIndex], L[i]
 
     return L
-
-print(selection_sort([7,2,4,5,3,1]))

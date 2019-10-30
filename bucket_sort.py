@@ -1,3 +1,5 @@
+import insertion_sort
+
 def list_copyat(to, fr):
     beg = 0
     end = len(fr)
@@ -32,7 +34,7 @@ def create_buckets(m, b, minel):
 def in_range(e, i):
     return i[0] <= e and i[1] >= e
 
-def bucket_sort(A, min=0, incby=10, sort=sorted):
+def bucket_sort(A, min=0, incby=10, sort=insertion_sort.insertion_sort):
     buckets = create_buckets(max(A), incby, min)
 
     for elem in A:
@@ -45,5 +47,3 @@ def bucket_sort(A, min=0, incby=10, sort=sorted):
         list_copyat(sortedA, sort(buckets[key]))
 
     return sortedA
-
-print(bucket_sort([20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0]))

@@ -13,5 +13,3 @@ def bubble_sort(L):
                 swapped_once = True
 
     return L
-
-print(bubble_sort([7,2,4,5,3,1]))
