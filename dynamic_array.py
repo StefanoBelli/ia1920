@@ -37,35 +37,60 @@ class dynamic_array(Collection):
         return what in self._raw
 
     def __str__(self):
-        s = "[ "
-        for i in self:
-            s += "{}, ".format(i)
-        s = s[:-2]
-        s += " ]"
+        if self._nelem > 0:
+            s = "[ "
+            for i in self:
+                s += "{}, ".format(i)
 
-        return s
+            s = s[:-2]
+            s += " ]"
 
-    def append(self, what):
-        if self._nelem >= self._cap:
-            self._more_space(self._cap << 1)
+            return s
 
-        self._raw[self._nelem] = what
-        self._nelem += 1
+        return "[]"
 
-    def _more_space(self, cap):
+    def __repr__(self):
+        return self.__str__()
+
+    def _resize(self, cap):
         _newraw = (cap * py_object)()
 
-        for i in range(len(self._raw)):
+        lnr = len(_newraw)
+        lr = len(self._raw)
+        size = None
+
+        if lnr > lr:
+            size = lr
+        else:
+            size = lnr
+
+        for i in range(size):
             _newraw[i] = self._raw[i]
 
         self._cap = cap
         self._raw = _newraw
 
-d = dynamic_array(5,6,7)
-d.append(1)
-d.append(2)
+    # @public
+    def append(self, what):
+        if self._nelem >= self._cap:
+            self._resize(self._cap << 1)
 
-for i in d:
-    print(i)
-    
-print(d)
+        self._raw[self._nelem] = what
+        self._nelem += 1
+
+    # @public
+    def remove(self, idx):
+        if idx < 0 or idx >= self._nelem:
+            raise IndexError("invalid index: contains {} items".format(self._nelem))
+
+        for i in range(idx + 1, self._nelem):
+            self._raw[i - 1] = self._raw[i]
+
+        self._nelem -= 1
+
+        if self._nelem < (self._cap / 2):
+            self._resize(self._nelem + 1)
+
+    # @public
+    def get_capacity(self):
+        return self._cap
