@@ -25,8 +25,3 @@ class Queue:
         e = self._array[self._read]
         self._read = (self._read + 1) % self._max
         return e
-
-q = Queue(3)
-
-print(q.enqueue(3))
-print(q.enqueue(4))
