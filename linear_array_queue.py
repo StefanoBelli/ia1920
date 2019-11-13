@@ -15,6 +15,9 @@ class Queue:
         return True
 
     def dequeue(self):
+        if self._write == 0:
+            return None
+
         elem = self._array[0]
         for i in range(0, self._write - 1):
             self._array[i] = self._array[i+1]
@@ -24,4 +27,3 @@ class Queue:
 
     def __len__(self):
         return self._write
-    
