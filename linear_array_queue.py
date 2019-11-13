@@ -12,6 +12,7 @@ class Queue:
 
         self._array[self._write] = elem
         self._write += 1
+        
         return True
 
     def dequeue(self):
@@ -19,10 +20,11 @@ class Queue:
             return None
 
         elem = self._array[0]
-        for i in range(0, self._write - 1):
+        self._write -= 1
+
+        for i in range(0, self._write):
             self._array[i] = self._array[i+1]
 
-        self._write -= 1
         return elem
 
     def __len__(self):
