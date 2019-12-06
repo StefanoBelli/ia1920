@@ -104,9 +104,6 @@ class BinarySearchTree:
             parent = parent.parent
 
         return parent.key
-    
-    def arity(self, key):
-        return self._arity(key)[1]
 
     def _min(self, from_node):
         cur = from_node
@@ -134,16 +131,8 @@ class BinarySearchTree:
                 cur = cur.right
 
         return None
-
-    def _arity(self, key):
-        tgt = self._node_lookup(key)
-
-        if not tgt:
-            return None
-
-        if not tgt.right and not tgt.left:
-            return (tgt, 0)
-        elif not tgt.right and tgt.left or tgt.right and not tgt.left:
-            return (tgt, 1)
         
-        return(tgt, 2)
+bst = BinarySearchTree(5,3,4,1,2)
+
+bst.delete(3)
+print(bst.search(3))
