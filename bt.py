@@ -2,10 +2,15 @@ from queue import SimpleQueue as Queue
 
 class BinaryTree:
     class BinaryNode:
-        def __init__(self, key, left=None, right=None):
+        def __init__(self, key, parent=None, left=None, right=None):
             self._right = right
             self._left = left
             self._key = key
+            self._parent = parent
+
+        @property
+        def parent(self):
+            return self._parent
 
         @property
         def right(self):
@@ -31,6 +36,10 @@ class BinaryTree:
         def key(self, v):
             self._key = v
 
+        @parent.setter
+        def parent(self, v):
+            self._parent = v
+
     def __init__(self, *args):
         self._root = None
         for arg in args:
@@ -48,10 +57,10 @@ class BinaryTree:
             cur_node = q.get()
 
             if cur_node.left == None:
-                cur_node.left = BinaryTree.BinaryNode(key)
+                cur_node.left = BinaryTree.BinaryNode(key, cur_node)
                 return cur_node.left
             elif cur_node.right == None:
-                cur_node.right = BinaryTree.BinaryNode(key)
+                cur_node.right = BinaryTree.BinaryNode(key, cur_node)
                 return cur_node.right
 
             if cur_node.left:
@@ -190,6 +199,9 @@ class BinaryTree:
         return nnodes
 
     def __str__(self):
+        if self._root and not self._root.left and not self._root.right:
+            return "({})".format(self._root.key)
+
         s = ""
         q = Queue()
         q.put(self._root)

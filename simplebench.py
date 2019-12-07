@@ -4,11 +4,10 @@ import bucket_sort
 import insertion_sort
 import merge_sort
 import quick_sort
-import random
 import selection_sort
 import sys
 import time
-
+import random
 
 def util_list_copy(old):
     new = []
@@ -34,7 +33,7 @@ test_on = {
         "InsertionSort": insertion_sort.insertion_sort, 
         "QuickSort": quick_sort.quick_sort, 
         "SelectionSort": selection_sort.selection_sort,
-        "MergeSort": merge_sort.merge_sort
+        "MergeSort": merge_sort.merge_sort,
         }
 
 for key in test_on:
