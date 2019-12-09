@@ -172,8 +172,7 @@ class HashTable(MutableMapping):
 			r = 0
 			for bs in pickle.dumps(key):
 				r += bs
-
-			print(r)
+				
 			return r
 		
 		return key
