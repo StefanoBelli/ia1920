@@ -1,7 +1,7 @@
 from ctypes import py_object
 from collections.abc import Collection
 
-class dynamic_array(Collection):
+class DynamicArray(Collection):
     def __init__(self, *args):
         argl = len(args)
         if argl == 0 or argl == 1:
