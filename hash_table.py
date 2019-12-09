@@ -1,6 +1,5 @@
 from dynamic_array import DynamicArray
 from collections.abc import MutableMapping
-import random
 import pickle
 
 # sucks but thats it
@@ -101,12 +100,13 @@ class HashTable(MutableMapping):
 		return None
 
 	def __len__(self):
-		j = 0
-		for i in range(self._size):
-			if not self._arr[i].deleted and not self._arr[i].nil:
-				j += 1
-		
-		return j
+		#j = 0
+		#for i in range(self._size):
+		#	if not self._arr[i].deleted and not self._arr[i].nil:
+		#		j += 1
+		#
+		#return j
+		return self._busy
 
 	def __setitem__(self, key, value):
 		if self._busy + 1 == self._size:
