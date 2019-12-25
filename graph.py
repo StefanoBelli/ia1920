@@ -33,3 +33,11 @@ class WeightedGraph:
 
     def adj(self, vertex):
         return self._raw_graph[vertex]
+
+def dfs(G, n, v = []):
+    if not n in v:
+        v.append(n)
+        #print("just visited: {}".format(n))
+
+        for nadj in G.adj(n):
+            dfs(G, nadj[0], v)
