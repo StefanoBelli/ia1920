@@ -18,6 +18,7 @@ ht = hash_table.HashTable()
 for i in range(12):
     ht[random.randint(0,65535)] = random.randint(1,10)
 
+
 for kv in ht:
     print("{}:{}".format(kv[0], kv[1]))
 
