@@ -33,6 +33,18 @@ class WeightedGraph:
 
     def adj(self, vertex):
         return self._raw_graph[vertex]
+        
+    def link_weight(self, vertex_from, vertex_to):
+        k = self._raw_graph.keys()
+
+        if not vertex_from in k or not vertex_to in k:
+            return False
+
+        for links in self._raw_graph[vertex_from]:
+            if links[0] == vertex_to:
+                return links[1]
+
+        return False
 
 def dfs(G, n, v = []):
     if not n in v:
